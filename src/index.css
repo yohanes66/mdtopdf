@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ─── Custom scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9ca3af;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #4b5563;
+}
+
+/* ─── Editor textarea ──────────────────────────────────────── */
+.md-editor {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular,
+    'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 13.5px;
+  line-height: 1.8;
+  tab-size: 2;
+  caret-color: #3b82f6;
+}
+
+.md-editor:focus {
+  outline: none;
+}
+
+/* ─── Divider drag cursor ──────────────────────────────────── */
+.dragging-divider {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+/* ─── Smooth transitions ───────────────────────────────────── */
+.pane-transition {
+  transition: width 0s;
+}
+
+/* ─── Scrollbar hidden utility ─────────────────────────────── */
+/* Used on the formatting toolbar to hide the scrollbar while   */
+/* keeping horizontal scroll functional (touch or mouse).       */
+.scrollbar-none {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE / Edge */
+  -webkit-overflow-scrolling: touch; /* iOS momentum scroll  */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;                  /* Chrome / Safari / Opera  */
+}
+
+/* ─── iOS safe-area bottom padding ────────────────────────── */
+/* Prevents the bottom tab bar from being obscured by the       */
+/* iPhone home indicator on notched / Dynamic Island devices.   */
+.safe-b {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─── Print / PDF styles ───────────────────────────────────── */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
